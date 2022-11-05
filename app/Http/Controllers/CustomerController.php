@@ -10,11 +10,11 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Inertia::render
      */
     public function index()
     {
-      
+
       return Inertia::render('components/ExampleComponent');
 
     }

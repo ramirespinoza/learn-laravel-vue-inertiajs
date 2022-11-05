@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,15 @@ use App\Http\Controllers\CustomerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 
+Route::get('/', function () {
+    return Inertia::render('Welcome/Index');
+});
 
 Route::get('/customer', [CustomerController::class, 'index']);
