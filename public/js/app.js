@@ -5491,7 +5491,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    type: Array
+    type: Object
   },
   created: function created() {
     this.form = this.type;
@@ -5510,7 +5510,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.put(route('type.update'), this.form);
+      this.$inertia.put(route('type.update', this.type), this.form);
     }
   }
 });
@@ -5534,7 +5534,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    types: Array
+    types: Object
   },
   components: {
     Container: _Container__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -6219,7 +6219,7 @@ var render = function render() {
     })])]), _vm._v(" "), _c("Link", {
       attrs: {
         method: "delete",
-        href: _vm.route("type.destroy", type.id)
+        href: _vm.route("type.destroy", type)
       }
     }, [_c("svg", {
       staticStyle: {

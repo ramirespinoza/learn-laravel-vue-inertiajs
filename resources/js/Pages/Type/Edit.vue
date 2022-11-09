@@ -34,7 +34,7 @@ import {Link} from "@inertiajs/inertia-vue";
 
 export default {
     props: {
-        type: Array,
+        type: Object,
     },
     created() {
         this.form = this.type;
@@ -53,7 +53,7 @@ export default {
     },
     methods:{
         submit(){
-            this.$inertia.put(route('type.update')  ,  this.form);
+            this.$inertia.put(route('type.update', this.type),  this.form);
         }
     }
 }

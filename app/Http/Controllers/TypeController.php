@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
+
 class TypeController extends Controller
 {
     /**
@@ -67,10 +68,10 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(Type $type)
     {
         //
     }
@@ -78,7 +79,7 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Type $type
      * @return \Inertia\Inertia::render;
      */
     public function edit(Type $type)
@@ -90,7 +91,7 @@ class TypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Type $type
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Type $type)
@@ -104,7 +105,7 @@ class TypeController extends Controller
 
             $type->update($validated);
 
-            return Redirect::route('type.index');
+            return Redirect::route('type.index',[], 303);
 
 
         } catch (\Throwable $th) {
@@ -121,13 +122,13 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Type  $book
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Type $type)
     {
         $type->delete();
 
-        return Redirect::route('type.index');
+        return Redirect::route('type.index',[], 303);
     }
 }
