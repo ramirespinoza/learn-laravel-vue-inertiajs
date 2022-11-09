@@ -8,7 +8,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
+        @routes
         <script src="{{ mix('/js/app.js') }}" defer></script>
         @inertiaHead
 
@@ -16,7 +18,7 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center  sm:pt-0">
 
-        @inertia
-            </div>
+            @inertia
+        </div>
     </body>
 </html>

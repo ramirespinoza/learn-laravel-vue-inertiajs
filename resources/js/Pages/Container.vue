@@ -9,13 +9,23 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+
+                            <Link  method="get"
+                                   href="/"
+                                   class="nav-link"
+                                   >Home</Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <Link  method="get"
+                                   href="/book"
+                                   class="nav-link"
+                            >Libros</Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
+                            <Link  method="get"
+                                   href="/type"
+                                   class="nav-link"
+                            >Categorias</Link>
                         </li>
                     </ul>
                 </div>
@@ -26,3 +36,16 @@
         </div>
     </div>
 </template>
+
+
+<script>
+import {Link} from "@inertiajs/inertia-vue";
+
+export default {
+
+    components: {
+        Link,
+    }
+
+}
+</script>
