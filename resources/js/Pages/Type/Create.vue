@@ -14,7 +14,7 @@
                                 </div>
 
                                 <Link
-                                    :href="route('book.index')"
+                                    :href="route('type.index')"
                                     class="btn btn-secondary"                                >
                                     Cancelar
                                 </Link>

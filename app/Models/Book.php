@@ -18,4 +18,8 @@ class Book extends Model
         'publication_date',
         'type_id',
     ];
+
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }

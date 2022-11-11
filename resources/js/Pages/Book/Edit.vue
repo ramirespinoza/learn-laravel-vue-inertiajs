@@ -3,7 +3,7 @@
         <container>
                         <form @submit.prevent="submit">
                             <fieldset>
-                                <legend>Crear nuevo libro</legend>
+                                <legend>Actualizar {{form.name}}</legend>
                                 <div class="mb-3">
                                     <label for="disabledTextInput" class="form-label">Nombre</label>
                                     <input v-model="form.name" type="text" id="name" class="form-control" placeholder="Mobby Dick">
@@ -61,6 +61,10 @@ import {Link} from "@inertiajs/inertia-vue";
 export default {
     props: {
       types: Array,
+        book: Object,
+    },
+    created() {
+        this.form = this.book;
     },
     components: {
       Container,
@@ -80,7 +84,7 @@ export default {
     methods:{
         submit(){
             console.log(this.form);
-            this.$inertia.post(route('book.store'), this.form);
+            this.$inertia.put(route('book.update', this.book), this.form);
         }
     }
 }

@@ -36,7 +36,7 @@
                 <td style="width: 100px">
                     <Link
                         method="get"
-                        :href="route('book.show', book.id)"
+                        :href="route('book.show', book)"
                         class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px;">
@@ -46,8 +46,8 @@
                     </Link>
 
                     <Link
-                        method="put"
-                        :href="route('book.edit', book.id)"
+                        method="get"
+                        :href="route('book.edit', book)"
                         class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px;">

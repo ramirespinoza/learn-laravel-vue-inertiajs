@@ -38,7 +38,7 @@ class BookController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse | \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -72,22 +72,25 @@ class BookController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Inertia::render
      */
     public function show(Book $book)
     {
-        //
+        $book->load('type');
+        return Inertia::render('Book/Show', ['book' => $book]);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Inertia::render
      */
     public function edit(Book $book)
     {
-        //
+        $types = Type::all()->reverse();
+        return Inertia::render('Book/Edit', ['book' => $book, 'types' => $types]);
     }
 
     /**
@@ -95,21 +98,47 @@ class BookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse | \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Book $book)
     {
-        //
+        try {
+            $validated = $request->validate([
+
+                'name' => 'required',
+                'author' => 'required',
+                'editorial' => 'required',
+                'publication_date' => 'required',
+                'type_id' => 'required',
+            ]);
+
+            $book->update($validated);
+
+            return Redirect::route('book.index',[], 303);
+
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'create',
+                'error'     => $th->getMessage(),
+                'school'   => $request->all()
+            ]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Book $book)
     {
-        //
+
+        $book->delete();
+
+        return Redirect::route('book.index',[], 303);
     }
 }
