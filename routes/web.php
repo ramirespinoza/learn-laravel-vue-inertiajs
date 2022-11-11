@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 Route::get('/', function () {
-    //return Inertia::render('Home/Index');
+    return Inertia::render('Home/Index');
 });
 
 Route::resource('book', BookController::class);

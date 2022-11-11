@@ -6,19 +6,19 @@
                                 <legend>Crear nuevo libro</legend>
                                 <div class="mb-3">
                                     <label for="disabledTextInput" class="form-label">Nombre</label>
-                                    <input type="text" id="name" class="form-control" placeholder="Mobby Dick">
+                                    <input v-model="form.name" type="text" id="name" class="form-control" placeholder="Mobby Dick">
                                 </div>
                                 <div class="mb-3">
                                     <label for="disabledTextInput" class="form-label">Autor</label>
-                                    <input type="text" id="author" class="form-control" placeholder="Herman Melville">
+                                    <input v-model="form.author" type="text" id="author" class="form-control" placeholder="Herman Melville">
                                 </div>
                                 <div class="mb-3">
                                     <label for="disabledTextInput" class="form-label">Editorial</label>
-                                    <input type="text" id="editorial" class="form-control" placeholder="Nuevo Amanecer">
+                                    <input v-model="form.editorial" type="text" id="editorial" class="form-control" placeholder="Nuevo Amanecer">
                                 </div>
                                 <div class="mb-3">
                                     <label for="disabledTextInput" class="form-label">Fecha de publicación</label>
-                                    <input type="date" id="publication_date" class="form-control">
+                                    <input v-model="form.publication_date" type="date" id="publication_date" class="form-control">
                                 </div>
 
                                 <div class="mb-3">
@@ -27,6 +27,7 @@
                                         class="select "
                                         :required="true"
                                         id="type_id"
+                                        v-model="form.type_id"
                                     >
                                         <option
                                             v-for="type in types"
@@ -75,7 +76,13 @@ export default {
     },
     data() {
         return {
-            form: Array,
+            form: {
+                name: "",
+                author: "",
+                editorial: "",
+                publication_date: "",
+                type_id: "",
+            },
         }
     },
     methods:{

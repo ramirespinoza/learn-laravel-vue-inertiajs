@@ -31,7 +31,7 @@
                 </div>
             </div>
         </nav>
-        <div class="p-5 " style="width: 80%">
+        <div class="p-5 " style="width: 80%;max-width: 1000px; margin: 0 auto">
             <slot></slot>
         </div>
     </div>

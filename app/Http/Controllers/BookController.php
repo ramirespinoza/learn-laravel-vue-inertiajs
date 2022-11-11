@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class BookController extends Controller
@@ -37,11 +38,34 @@ class BookController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validated = $request->validate([
+
+                'name' => 'required',
+                'author' => 'required',
+                'editorial' => 'required',
+                'publication_date' => 'required',
+                'type_id' => 'required',
+            ]);
+
+            Book::create($validated);
+
+            return Redirect::route('book.index');
+
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'    => 'failed',
+                'code'      => '0',
+                'operation' => 'create',
+                'error'     => $th->getMessage(),
+                'school'   => $request->all()
+            ]);
+        }
     }
 
     /**

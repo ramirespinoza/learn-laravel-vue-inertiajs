@@ -5351,7 +5351,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      form: Array
+      form: {
+        name: "",
+        author: "",
+        editorial: "",
+        publication_date: "",
+        type_id: ""
+      }
     };
   },
   methods: {
@@ -5593,11 +5599,26 @@ var render = function render() {
       "for": "disabledTextInput"
     }
   }, [_vm._v("Nombre")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.name,
+      expression: "form.name"
+    }],
     staticClass: "form-control",
     attrs: {
       type: "text",
       id: "name",
       placeholder: "Mobby Dick"
+    },
+    domProps: {
+      value: _vm.form.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "name", $event.target.value);
+      }
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
@@ -5607,11 +5628,26 @@ var render = function render() {
       "for": "disabledTextInput"
     }
   }, [_vm._v("Autor")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.author,
+      expression: "form.author"
+    }],
     staticClass: "form-control",
     attrs: {
       type: "text",
       id: "author",
       placeholder: "Herman Melville"
+    },
+    domProps: {
+      value: _vm.form.author
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "author", $event.target.value);
+      }
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
@@ -5621,11 +5657,26 @@ var render = function render() {
       "for": "disabledTextInput"
     }
   }, [_vm._v("Editorial")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.editorial,
+      expression: "form.editorial"
+    }],
     staticClass: "form-control",
     attrs: {
       type: "text",
       id: "editorial",
       placeholder: "Nuevo Amanecer"
+    },
+    domProps: {
+      value: _vm.form.editorial
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "editorial", $event.target.value);
+      }
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
@@ -5635,10 +5686,25 @@ var render = function render() {
       "for": "disabledTextInput"
     }
   }, [_vm._v("Fecha de publicación")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.publication_date,
+      expression: "form.publication_date"
+    }],
     staticClass: "form-control",
     attrs: {
       type: "date",
       id: "publication_date"
+    },
+    domProps: {
+      value: _vm.form.publication_date
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "publication_date", $event.target.value);
+      }
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
@@ -5648,10 +5714,27 @@ var render = function render() {
       "for": "disabledSelect"
     }
   }, [_vm._v("Tipo")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.type_id,
+      expression: "form.type_id"
+    }],
     staticClass: "select",
     attrs: {
       required: true,
       id: "type_id"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.form, "type_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
     }
   }, _vm._l(_vm.types, function (type) {
     return _c("option", {
@@ -5719,39 +5802,43 @@ var render = function render() {
     staticClass: "table align-middle mb-0 bg-white"
   }, [_c("thead", {
     staticClass: "bg-light"
-  }, [_c("tr", [_c("th", [_vm._v("DI")]), _vm._v(" "), _c("th", [_vm._v("Nombre")]), _vm._v(" "), _c("th", [_vm._v("Editorial")]), _vm._v(" "), _c("th", [_vm._v("Tipo")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.books, function (book) {
+  }, [_c("tr", [_c("th", [_vm._v("Nombre")]), _vm._v(" "), _c("th", [_vm._v("Editorial")]), _vm._v(" "), _c("th")])]), _vm._v(" "), _c("tbody", _vm._l(_vm.books, function (book) {
     return _c("tr", {
       key: book.id
-    }, [_c("td", [_c("div", {
-      staticClass: "d-flex align-items-center"
-    }, [_c("img", {
-      staticClass: "rounded-circle",
+    }, [_c("td", {
       staticStyle: {
-        width: "45px",
-        height: "45px"
-      },
-      attrs: {
-        src: book.image,
-        alt: book.name
+        width: "min-content"
       }
-    }), _vm._v(" "), _c("div", {
+    }, [_c("div", {
+      staticClass: "d-flex align-items-center"
+    }, [_c("div", {
       staticClass: "ms-3"
     }, [_c("p", {
       staticClass: "fw-bold mb-1"
     }, [_vm._v(_vm._s(book.name))]), _vm._v(" "), _c("p", {
       staticClass: "text-muted mb-0"
-    }, [_vm._v(_vm._s(book.author))])])])]), _vm._v(" "), _c("td", [_c("p", {
+    }, [_vm._v(_vm._s(book.author))])])])]), _vm._v(" "), _c("td", {
+      staticStyle: {
+        width: "min-content"
+      }
+    }, [_c("p", {
       staticClass: "fw-normal mb-1"
     }, [_vm._v(_vm._s(book.editorial))]), _vm._v(" "), _c("p", {
       staticClass: "text-muted mb-0"
-    }, [_vm._v(" " + _vm._s(book.publication_date))])]), _vm._v(" "), _c("td", [_c("Link", {
+    }, [_vm._v(" " + _vm._s(book.publication_date))])]), _vm._v(" "), _c("td", {
+      staticStyle: {
+        width: "100px"
+      }
+    }, [_c("Link", {
       staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
       attrs: {
         method: "get",
-        href: _vm.route("book.show", book.id),
-        as: "button"
+        href: _vm.route("book.show", book.id)
       }
     }, [_c("svg", {
+      staticStyle: {
+        width: "20px"
+      },
       attrs: {
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
@@ -5776,10 +5863,12 @@ var render = function render() {
       staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
       attrs: {
         method: "put",
-        href: _vm.route("book.edit", book.id),
-        as: "button"
+        href: _vm.route("book.edit", book.id)
       }
     }, [_c("svg", {
+      staticStyle: {
+        width: "20px"
+      },
       attrs: {
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
@@ -5797,10 +5886,12 @@ var render = function render() {
       staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
       attrs: {
         method: "delete",
-        href: _vm.route("book.destroy", book.id),
-        as: "button"
+        href: _vm.route("book.destroy", book.id)
       }
     }, [_c("svg", {
+      staticStyle: {
+        width: "20px"
+      },
       attrs: {
         xmlns: "http://www.w3.org/2000/svg",
         fill: "none",
@@ -5887,7 +5978,9 @@ var render = function render() {
   }, [_vm._v("Categorias")])], 1)])])])]), _vm._v(" "), _c("div", {
     staticClass: "p-5",
     staticStyle: {
-      width: "80%"
+      width: "80%",
+      "max-width": "1000px",
+      margin: "0 auto"
     }
   }, [_vm._t("default")], 2)]);
 };
