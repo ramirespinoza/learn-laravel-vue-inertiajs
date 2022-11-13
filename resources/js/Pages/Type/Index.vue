@@ -9,7 +9,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Acciones</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </td>
-                <td>
+                <td style="width: 100px">
                     <Link
                         method="get"
                         :href="route('type.edit', type)"

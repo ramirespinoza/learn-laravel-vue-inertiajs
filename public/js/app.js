@@ -6706,7 +6706,7 @@ var render = function render() {
     staticClass: "table align-middle mb-0 bg-white"
   }, [_c("thead", {
     staticClass: "bg-light"
-  }, [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nombre")]), _vm._v(" "), _c("th", [_vm._v("Acciones")])])]), _vm._v(" "), _c("tbody", _vm._l(_vm.types, function (type) {
+  }, [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nombre")]), _vm._v(" "), _c("th")])]), _vm._v(" "), _c("tbody", _vm._l(_vm.types, function (type) {
     return _c("tr", {
       key: type.id
     }, [_c("td", [_c("div", {
@@ -6723,7 +6723,11 @@ var render = function render() {
       staticClass: "fw-bold mb-1"
     }, [_vm._v(_vm._s(type.name))]), _vm._v(" "), _c("p", {
       staticClass: "text-muted mb-0"
-    }, [_vm._v(_vm._s(type.description))])])])]), _vm._v(" "), _c("td", [_c("Link", {
+    }, [_vm._v(_vm._s(type.description))])])])]), _vm._v(" "), _c("td", {
+      staticStyle: {
+        width: "100px"
+      }
+    }, [_c("Link", {
       staticClass: "w-4 mr-2 transform hover:text-purple-500 hover:scale-110",
       attrs: {
         method: "get",
