@@ -24,9 +24,16 @@ Route::get('/', function () {
 
 Route::get('/', function () {
     return Inertia::render('Home/Index');
-});
+})->name('home')->middleware('auth');
 
-Route::resource('book', BookController::class);
+Route::resource('book', BookController::class)->middleware('auth');
 
 
-Route::resource('type', TypeController::class);
+Route::resource('type', TypeController::class)->middleware('auth');
+
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/home',function () {
+    return \Illuminate\Support\Facades\Redirect::route('home');
+} )->middleware('auth');
